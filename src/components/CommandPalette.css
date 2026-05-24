@@ -1,0 +1,76 @@
+.cmdk-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(4, 7, 15, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 200;
+  display: flex; justify-content: center; align-items: flex-start;
+  padding: 12vh 1.5rem 2rem;
+}
+.cmdk {
+  width: 100%; max-width: 640px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 0 1px var(--line);
+  position: relative;
+}
+.cmdk::before {
+  content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg);
+  background: conic-gradient(from var(--angle), transparent 60%, var(--neon-cyan) 80%, var(--neon-violet) 100%);
+  z-index: -1; padding: 1px;
+  animation: border-rotate 8s linear infinite;
+  opacity: 0.4;
+}
+
+.cmdk__input {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+}
+.cmdk__input svg:first-child { color: var(--neon-cyan); }
+.cmdk__input input { flex: 1; background: transparent; border: none; padding: 0; font-size: 1rem; color: var(--text-0); }
+.cmdk__input input:focus { background: transparent; box-shadow: none; border: none; }
+.cmdk__input kbd { font-family: var(--font-mono); font-size: 0.66rem; padding: 0.2rem 0.5rem; border: 1px solid var(--line); border-radius: 4px; color: var(--text-2); background: rgba(255,255,255,0.03); }
+
+.cmdk__list { max-height: 60vh; overflow-y: auto; padding: 0.4rem; }
+.cmdk__empty { padding: 2.5rem 1rem; text-align: center; color: var(--text-2); }
+.cmdk__empty strong { color: var(--text-0); }
+
+.cmdk__item {
+  display: grid; grid-template-columns: 32px 1fr auto; align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-md);
+  text-align: left;
+  color: var(--text-0);
+  border: 1px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+  width: 100%;
+}
+.cmdk__item:hover, .cmdk__item.is-on {
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+.cmdk__icon { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: color-mix(in srgb, var(--accent) 14%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); color: var(--accent); }
+.cmdk__item > div { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.cmdk__item strong { font-size: 0.92rem; font-weight: 600; color: var(--text-0); }
+.cmdk__item span { font-size: 0.76rem; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cmdk__kind { font-size: 0.62rem; color: var(--text-2); letter-spacing: 0.16em; text-transform: uppercase; padding: 0.2rem 0.5rem; border: 1px solid var(--line); border-radius: 4px; }
+
+.cmdk__foot {
+  display: flex; gap: 1rem;
+  padding: 0.65rem 1rem;
+  border-top: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  font-size: 0.72rem; color: var(--text-2);
+  font-family: var(--font-mono);
+}
+.cmdk__foot kbd {
+  font-family: var(--font-mono); font-size: 0.66rem;
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.04);
+  display: inline-flex; align-items: center;
+  margin: 0 0.15rem;
+}

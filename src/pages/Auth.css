@@ -1,0 +1,48 @@
+.auth-shell { position: relative; min-height: calc(100vh - 80px); padding: 3rem 0 5rem; display: flex; align-items: center; overflow: hidden; }
+.auth-bg { position: absolute; inset: 0; pointer-events: none; }
+.auth-orb { position: absolute; border-radius: 50%; filter: blur(110px); opacity: 0.4; animation: float-y 12s ease-in-out infinite; }
+.auth-orb--1 { width: 520px; height: 520px; background: #00f0ff; top: -180px; left: -120px; }
+.auth-orb--2 { width: 440px; height: 440px; background: #b537ff; bottom: -200px; right: -120px; animation-delay: -5s; }
+.auth-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(125,173,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(125,173,255,0.06) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse at 50% 50%, black, transparent 70%); }
+
+.auth-grid-wrap { position: relative; z-index: 1; display: grid; place-items: center; }
+.auth-card { width: 100%; max-width: 500px; padding: 2.5rem; position: relative; }
+.auth-card::before {
+  content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg);
+  background: conic-gradient(from var(--angle), transparent 60%, var(--neon-cyan) 80%, var(--neon-violet) 100%);
+  z-index: -1; padding: 1px;
+  animation: border-rotate 12s linear infinite;
+  opacity: 0.35;
+}
+
+.auth-card__head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.auth-brand { display: flex; align-items: center; gap: 0.6rem; color: var(--text-0); font-family: var(--font-display); font-weight: 700; letter-spacing: 0.12em; }
+.auth-brand:hover { text-shadow: none; }
+.auth-brand__mark { width: 32px; height: 32px; border-radius: 8px; background: var(--grad-primary); color: #04070f; display: grid; place-items: center; box-shadow: var(--glow-cyan); }
+.auth-card__title { font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 0.4rem; }
+.auth-card__sub { color: var(--text-1); font-size: 0.92rem; margin-bottom: 1.5rem; }
+
+.auth-form { display: flex; flex-direction: column; gap: 1rem; }
+.auth-field { position: relative; display: flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 0 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+.auth-field:focus-within { border-color: var(--neon-cyan); box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.12); background: rgba(0,240,255,0.04); }
+.auth-field svg { color: var(--text-2); flex-shrink: 0; }
+.auth-field:focus-within svg { color: var(--neon-cyan); }
+.auth-field input { background: transparent; border: none; padding: 0.85rem 0; flex: 1; font-size: 0.95rem; }
+.auth-field input:focus { background: transparent; border: none; box-shadow: none; }
+
+.auth-error { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; border: 1px solid rgba(255, 43, 209, 0.4); background: rgba(255, 43, 209, 0.08); color: #ff7ad8; border-radius: var(--radius-md); font-size: 0.86rem; margin-bottom: 1rem; }
+
+.auth-divider { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 1rem; color: var(--text-2); font-size: 0.78rem; }
+.auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+.auth-foot { text-align: center; color: var(--text-1); font-size: 0.92rem; }
+
+.auth-seed { margin-top: 1.5rem; padding: 1rem; border: 1px dashed var(--line-strong); border-radius: var(--radius-md); background: rgba(0,240,255,0.04); font-size: 0.82rem; color: var(--text-1); }
+.auth-seed .mono { display: block; font-size: 0.7rem; color: var(--neon-cyan); letter-spacing: 0.18em; margin-bottom: 0.5rem; }
+.auth-seed div { padding: 0.2rem 0; font-family: var(--font-mono); }
+.auth-seed strong { color: var(--text-0); }
+
+.auth-spinner { width: 36px; height: 36px; border-radius: 50%; border: 3px solid rgba(0, 240, 255, 0.15); border-top-color: var(--neon-cyan); animation: spin 0.9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.btn:disabled, .btn[disabled] { opacity: 0.5; cursor: not-allowed; transform: none; }

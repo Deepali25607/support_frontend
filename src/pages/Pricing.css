@@ -1,0 +1,69 @@
+.billing-toggle {
+  display: inline-flex; padding: 0.35rem;
+  border-radius: 999px;
+  margin: 0 auto 3rem;
+  display: flex; gap: 0.25rem; width: fit-content;
+  position: relative;
+}
+.billing-toggle button {
+  position: relative;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.88rem; font-weight: 500; color: var(--text-1);
+  border-radius: 999px;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: color 0.2s;
+}
+.billing-toggle button:hover { color: var(--text-0); }
+.billing-toggle button.is-on { color: #04070f; font-weight: 600; }
+.billing-toggle__bg { position: absolute; inset: 0; background: var(--grad-primary); border-radius: 999px; z-index: -1; box-shadow: 0 4px 18px rgba(0, 240, 255, 0.3); }
+.billing-toggle__save { font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 999px; background: rgba(57, 255, 20, 0.18); color: var(--neon-green); font-weight: 600; }
+
+.pricing-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.pricing-block { padding: 2rem; }
+.pricing-block__head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.pricing-block__cat { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.18em; text-transform: uppercase; }
+.pricing-block__head h2 { margin: 0.5rem 0 0.3rem; font-size: 1.6rem; }
+.pricing-block__head p { font-size: 0.95rem; }
+
+.pricing-block__plans { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.mini-plan {
+  position: relative;
+  padding: 1.4rem 1.25rem;
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 0.5rem;
+  transition: transform 0.25s var(--ease-out-expo), border-color 0.25s, box-shadow 0.25s;
+}
+.mini-plan:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); }
+.mini-plan.is-featured { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); box-shadow: 0 0 0 1px var(--accent), 0 12px 30px color-mix(in srgb, var(--accent) 12%, transparent); }
+.mini-plan__badge { position: absolute; top: -10px; right: 1rem; padding: 0.25rem 0.7rem; border-radius: 999px; background: var(--accent); color: #04070f; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.mini-plan__name { font-size: 0.92rem; color: var(--text-1); font-weight: 500; }
+.mini-plan__price { font-size: 1.8rem; font-weight: 700; font-family: var(--font-display); color: var(--text-0); line-height: 1; display: flex; align-items: baseline; }
+.mini-plan__currency { font-size: 1rem; vertical-align: super; margin-right: 0.1rem; color: var(--accent); }
+.mini-plan__price small { font-size: 0.82rem; color: var(--text-2); font-weight: 400; margin-left: 0.3rem; }
+.mini-plan__users { font-size: 0.78rem; color: var(--text-2); }
+.mini-plan ul { list-style: none; padding: 0; margin: 0.4rem 0 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.mini-plan ul li { display: flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--text-1); }
+.mini-plan ul li svg { color: var(--accent); flex-shrink: 0; }
+
+.enterprise {
+  margin-top: 3rem;
+  padding: 3rem;
+  display: grid; grid-template-columns: 1.5fr 1fr;
+  gap: 2rem; align-items: center;
+  position: relative; overflow: hidden;
+}
+.enterprise::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(500px 200px at 100% 50%, rgba(181, 55, 255, 0.15), transparent 60%);
+  pointer-events: none;
+}
+.enterprise > div { position: relative; z-index: 1; }
+.enterprise h2 { margin: 1rem 0; }
+.enterprise__actions { display: flex; flex-direction: column; gap: 0.75rem; }
+
+@media (max-width: 720px) {
+  .pricing-block { padding: 1.5rem; }
+  .enterprise { grid-template-columns: 1fr; padding: 2rem; }
+}
