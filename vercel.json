@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://support-backend-mgzd.onrender.com/api/:path*" }
+  ]
+}
