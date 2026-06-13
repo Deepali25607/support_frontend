@@ -107,7 +107,15 @@
 .mega::before {
   content: ''; position: absolute; top: -10px; left: 0; right: 0; height: 14px;
 }
-.mega__inner { padding: 1.25rem; border-radius: var(--radius-lg); box-shadow: 0 18px 60px rgba(0,0,0,0.6), 0 0 0 1px var(--line); }
+.mega__inner {
+  padding: 1.25rem; border-radius: var(--radius-lg);
+  /* The default .glass background is only 55% opaque, so page content
+     behind the dropdown (eyebrows, headings) bleeds through and makes the
+     product items hard to read. A floating nav menu needs a near-solid
+     backdrop — override .glass with an opaque panel here. */
+  background: rgba(8, 12, 24, 0.98);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.6), 0 0 0 1px var(--line);
+}
 .mega__heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .mega__hint { font-size: 0.72rem; color: var(--text-2); }
 .mega__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }

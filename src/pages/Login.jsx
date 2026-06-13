@@ -83,16 +83,6 @@ export default function Login() {
           <div className="auth-divider"><span>or</span></div>
 
           <p className="auth-foot">No account yet? <Link to="/signup">Create one →</Link></p>
-
-          <div className="auth-seed">
-            <span className="mono">DEMO ACCOUNTS</span>
-            <div>
-              <strong>Customer:</strong> demo@customer.io / demo1234
-            </div>
-            <div>
-              <strong>Admin:</strong> admin@nexuslab.io / admin123
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

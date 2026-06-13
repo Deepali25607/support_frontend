@@ -37,20 +37,25 @@
   /* =====================================================================
      Public site — Hero
      ===================================================================== */
-  .hero__cta { flex-direction: column; align-items: stretch; }
+  .hero .hero__cta { flex-direction: column; align-items: stretch; }
   .hero__cta .btn { justify-content: center; }
-  .hero__sub { font-size: 0.98rem; margin-bottom: 1.4rem; }
-  .hero__pills { gap: 0.35rem; }
+  .hero .hero__sub { font-size: 0.98rem; margin-bottom: 1.4rem; }
+  .hero .hero__pills { gap: 0.35rem; }
 
   /* The orbit visual is purely decorative — its absolute-positioned
      product nodes overlap each other AND bleed into the CTAs above and
      stats below at narrow widths. Hide it on phones; the text + CTAs +
-     pills + stats carry the hero on mobile. */
-  .hero__visual { display: none; }
-  .hero__inner { padding-bottom: 1.5rem; gap: 1.25rem; }
+     pills + stats carry the hero on mobile.
+     NOTE: the `.hero` prefix is required — Home.css is imported by the
+     Home component and so is injected AFTER this file. With equal
+     specificity the later rule wins, which would re-show the orbit. The
+     extra class outranks Home.css's `.hero__visual { display: grid }`
+     regardless of source order. */
+  .hero .hero__visual { display: none; }
+  .hero .hero__inner { padding-bottom: 1.5rem; gap: 1.25rem; }
 
   /* Stats — already collapse, but tighten value size further */
-  .stats__value { font-size: 1.5rem; }
+  .stats .stats__value { font-size: 1.5rem; }
 
   /* Section heads */
   .section__head { margin-bottom: 2rem; }
