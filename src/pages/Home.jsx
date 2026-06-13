@@ -19,6 +19,7 @@ export default function Home() {
   const heroPills = content['hero.pills'] || [];
   const clientLogos = content['clients.logos']?.length ? content['clients.logos'] : fallbackLogos;
   const testimonials = content.testimonials?.length ? content.testimonials : fallbackTestimonials;
+  const statsData = content.stats?.length ? content.stats : stats;
 
   return (
     <>
@@ -115,7 +116,7 @@ export default function Home() {
         {/* Stats strip */}
         <div className="container">
           <div className="stats glass">
-            {stats.map((s) => (
+            {statsData.map((s) => (
               <div key={s.label} className="stats__item">
                 <div className="stats__value mono">
                   <Counter to={s.value} suffix={s.suffix} />

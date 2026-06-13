@@ -16,6 +16,12 @@ const FALLBACK = {
   'support.uptime': '99.98% uptime · last 30 days',
   'support.billingEmail': 'billing@nexuslab.io',
   'support.billingPhone': '+91 90000 00000',
+  stats: [
+    { value: 120, suffix: '+', label: 'Enterprise Clients' },
+    { value: 8, suffix: '', label: 'Flagship Products' },
+    { value: 99.9, suffix: '%', label: 'Uptime Guarantee' },
+    { value: 24, suffix: '/7', label: 'Support Coverage' },
+  ],
   testimonials: [],
   faqs: [],
 };

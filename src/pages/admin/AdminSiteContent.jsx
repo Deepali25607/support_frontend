@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Save, Check, Plus, X, RotateCcw, Type, MessageSquare, HelpCircle, Tag, Headphones } from 'lucide-react';
+import { Save, Check, Plus, X, RotateCcw, Type, MessageSquare, HelpCircle, Tag, Headphones, BarChart3 } from 'lucide-react';
 import { api } from '../../lib/api.js';
 import Reveal from '../../components/Reveal.jsx';
 import { useSiteContent } from '../../context/SiteContentContext.jsx';
 
 const GROUPS = [
   { id: 'hero', label: 'Hero & Pills', icon: Type, keys: ['hero.eyebrow', 'hero.title.lead', 'hero.title.tail', 'hero.subtitle', 'hero.pills'] },
+  { id: 'stats', label: 'Homepage Stats', icon: BarChart3, keys: ['stats'] },
   { id: 'contact', label: 'Support Contact', icon: Headphones, keys: ['support.email', 'support.phone', 'support.locations', 'support.hours', 'support.statusLine', 'support.uptime', 'support.billingEmail', 'support.billingPhone'] },
   { id: 'logos', label: 'Client Logos', icon: Tag, keys: ['clients.logos'] },
   { id: 'testimonials', label: 'Testimonials', icon: MessageSquare, keys: ['testimonials'] },
@@ -123,6 +124,9 @@ function FieldEditor({ item, value, onChange }) {
   if (item.kind === 'list') {
     return <StringList value={value || []} onChange={onChange} placeholder="Add a value…" />;
   }
+  if (item.kind === 'collection' && item.key === 'stats') {
+    return <StatsList value={value || []} onChange={onChange} />;
+  }
   if (item.kind === 'collection' && item.key === 'testimonials') {
     return <TestimonialList value={value || []} onChange={onChange} />;
   }
@@ -148,6 +152,38 @@ function StringList({ value, onChange, placeholder }) {
         <input value={draft} onChange={(e) => setDraft(e.target.value)} placeholder={placeholder} onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); if (draft.trim()) { onChange([...value, draft.trim()]); setDraft(''); } } }} />
         <button type="button" className="btn btn--ghost" onClick={() => { if (draft.trim()) { onChange([...value, draft.trim()]); setDraft(''); } }}><Plus size={14} /> Add</button>
       </div>
+    </div>
+  );
+}
+
+function StatsList({ value, onChange }) {
+  const update = (i, patch) => onChange(value.map((v, j) => (j === i ? { ...v, ...patch } : v)));
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+      {value.map((s, i) => (
+        <div key={i} className="sc-card">
+          <div className="form-row">
+            <div>
+              <label>Value</label>
+              <input
+                type="number"
+                step="any"
+                value={s.value ?? ''}
+                onChange={(e) => update(i, { value: e.target.value === '' ? '' : Number(e.target.value) })}
+              />
+            </div>
+            <div>
+              <label>Suffix</label>
+              <input value={s.suffix ?? ''} onChange={(e) => update(i, { suffix: e.target.value })} placeholder="e.g. +, %, /7" />
+            </div>
+          </div>
+          <div><label>Label</label><input value={s.label ?? ''} onChange={(e) => update(i, { label: e.target.value })} /></div>
+          <button type="button" className="btn btn--ghost" onClick={() => onChange(value.filter((_, j) => j !== i))} style={{ color: '#ff7ad8', alignSelf: 'flex-end' }}><X size={14} /> Remove</button>
+        </div>
+      ))}
+      <button type="button" className="btn btn--ghost" onClick={() => onChange([...value, { value: 0, suffix: '', label: '' }])}>
+        <Plus size={14} /> Add stat
+      </button>
     </div>
   );
 }
